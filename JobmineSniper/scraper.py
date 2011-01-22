@@ -12,7 +12,9 @@ class Scraper:
       'userid' : user.username,
       'pwd': user.password,
     })
-    self.opener.open(self.LOGIN_PAGE, login_data)
+    resp = self.opener.open(self.LOGIN_PAGE, login_data)
+    if -1 != resp.read().find('Your User ID and/or Password are invalid.'):
+      sys.stderr.write('Your User ID and/or Password are invalid.\n')
 
   def getInterviewPage(self):
     resp = self.opener.open(self.INTERVIEW_PAGE)
