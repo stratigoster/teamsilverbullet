@@ -19,7 +19,11 @@ select_data = urllib.urlencode({
   'DERIVED_SSTSNAV_SSTS_MAIN_GOTO$68$': 9999,
 })
 
+print 'loaded term selection page'
+
 resp = opener.open('https://quest.pecs.uwaterloo.ca/psc/SS/ACADEMIC/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL', select_data)
+
+print 'schedule open'
 
 o = file('x.html', 'w')
 o.write(resp.read())
